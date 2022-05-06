@@ -1,0 +1,163 @@
+.menu{
+  position: fixed;
+  z-index: 100;
+}
+
+
+::ng-deep .modal-prueba .modal-dialog {
+  width:100%;
+  position:fixed;
+  bottom:0;
+  right:0;
+  margin:0;
+  font-weight: 800;
+}
+
+.btn button{
+  padding: 15px 35px;
+	margin: 100px 0 0 0;
+  width: 400px;
+	height: 60px;
+	border-radius: 10px;
+	border: none;
+  outline: none;
+  background: transparent;
+	color: rgb(14, 14, 22);
+	font-family: 'Ruda', sans-serif;
+	font-size: 17px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	clip-path: circle(50px);
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+.btn button:hover {
+  clip-path: circle(100%);
+	color: white;
+	background-color: rgb(14, 14, 22);
+  box-shadow: 0px 1px 10px gray;
+}
+.btn button:active {
+  background-color: rgb(14, 14, 22);
+  box-shadow: 0px 0px 0px gray;
+}
+
+table {
+  border: 1px #a39485 solid;
+  font-size: .9em;
+  box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+th {
+  text-align: left;
+}
+
+thead {
+  font-weight: bold;
+  color: #fff;
+  background: #73685d;
+}
+
+ td, th {
+  padding: 1em .5em;
+  vertical-align: middle;
+}
+
+ td {
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  background: #fff;
+}
+
+a {
+  color: #73685d;
+}
+
+ @media all and (max-width: 768px) {
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  th {
+    text-align: right;
+  }
+
+  table {
+    position: relative;
+    padding-bottom: 0;
+    border: none;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+  }
+
+  thead {
+    float: left;
+    white-space: nowrap;
+  }
+
+  tbody {
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    white-space: nowrap;
+  }
+
+  tr {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  th {
+    border-bottom: 1px solid #a39485;
+  }
+
+  td {
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  }
+
+  .pre-scrollable{
+    max-height: 660px;
+    overflow-y: auto;
+  }
+
+  ng-select.ng-invalid.ng-touched .ng-select-container {
+    border-color: #dc3545;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px #fde6e8;
+}
+.barra {
+  width: 100%;
+  position: relative
+}
+.buscar {
+  float: left;
+  width: 100%;
+  border: 3px solid rgb(61, 6, 6);
+  padding: 5px;
+  height: 100%;
+  border-radius: 25px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+i{
+  position: absolute;
+  top:10px;
+  right: 0px;
+  width: 20px;
+  height: 36px;
+  text-align: center;
+  color: rgb(61, 6, 6);
+  font-size: 15px;
+}
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 15%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+}

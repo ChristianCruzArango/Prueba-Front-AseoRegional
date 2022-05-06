@@ -1,0 +1,127 @@
+<div class="menu">
+  <app-nav></app-nav>
+</div>
+
+
+<div class="container">
+  <div class="d-flex justify-content-start">
+    <div class="btn">
+      <button type="button" (click)="open(registrar,'r')">Registrar Pelicula</button>
+    </div>
+  </div>
+  <div class="d-flex justify-content-end">
+    <div class="wrap">
+      <div class="barra">
+        <div class="barraContainer">
+        <input type="text" class="buscar" placeholder="Ingrese el nombre de la pelicula que desea buscar" (input)="tiempoBusquedadPelicula(valor.value)" #valor>
+          <em class="fa fa-search"></em>
+        </div>
+      </div>
+  </div>
+
+  <table aria-describedby="Tabla Descripción autores">
+    <thead>
+      <tr>
+        <th class="text-center">Id</th>
+        <th class="text-center">Nombre</th>
+        <th class="text-center">Categoría</th>
+        <th class="text-center">Autor</th>
+        <th class="text-center">Fecha Lanzamiento</th>
+        <th class="text-center">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of peliculasArray">
+        <td class="text-center">{{p.id}}</td>
+        <td class="text-center">{{p.nombre}}</td>
+        <td class="text-center">{{p.categoria.nombre}}</td>
+        <td class="text-center">{{p.autor.nombre}}</td>
+        <td class="text-center">{{p.fecha_lanzamiento | date}} </td>
+
+          <td class="text-center">
+            <button type="button" class="btn btn-outline-danger" (click)="deletePeliculaId(p)" >Eliminar</button>
+            <br>
+            <br>
+            <button type="button" class="btn btn-outline-primary" (click)="searchPelicula(p,registrar)" >Modificar</button>
+          </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+
+
+<ng-template #registrar let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h2 class="modal-title text-center" *ngIf="!update" >Registra Categoría </h2>
+    <h2 class="modal-title text-center" *ngIf="update" >Actualizar Categoría </h2>
+
+    <button type="button" class="close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="pre-scrollable" (ngSubmit)="guardarPelicula(f)"  #f="ngForm">
+      <div class="form-group">
+        <label for="validation01">Nombre(*)</label>
+        <input type="text" class="form-control" id="validation01" name="nombre" [(ngModel)]="peliculaModel.nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="tipo" class="label-form-route p-1 titulo-input">
+          Categoría
+        </label>
+        <select
+          class="form-select"
+          id="categoria"
+          name="categoria"
+          [(ngModel)]="peliculaModel.categoria_id "
+          required
+        >
+          <option  *ngFor="let c of categorias" [value]="c.id">
+            {{c.nombre}}
+          </option>
+
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="tipo" class="label-form-route p-1 titulo-input">
+          Autor
+        </label>
+        <select
+          class="form-select"
+          id="autor"
+          name="autor"
+          required
+          [(ngModel)]="peliculaModel.autor_id"
+        >
+          <option *ngFor="let a of autors" [value]="a.id">
+            {{a.nombre}}
+          </option>
+
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="validation01">Productora(*)</label>
+        <input type="text" class="form-control" id="validation01" name="productora" [(ngModel)]="peliculaModel.productora" required>
+      </div>
+
+      <div class="form-group">
+        <label for="validation01">Fecha Lanzamiento(*)</label>
+        <input type="date" class="form-control" id="validation01" name="productora" [(ngModel)]="peliculaModel.fecha_lanzamiento" required>
+      </div>
+
+
+      <div class="modal-footer">
+        <div class="left-side">
+          <button type="button" class="btn btn-ligh" (click)="d('Cross click')">Cancelar</button>
+        </div>
+        <div class="divider"></div>
+        <div class="right-side">
+          <button type="submit" class="btn btn-danger" *ngIf="!update">Confirmar</button>
+          <button type="button" class="btn btn-danger" *ngIf="update" (click)="updatePelicula()">Actualizar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

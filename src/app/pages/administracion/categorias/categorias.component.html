@@ -1,0 +1,77 @@
+<div class="menu">
+  <app-nav></app-nav>
+</div>
+
+
+<div class="container">
+  <div class="d-flex justify-content-start">
+    <div class="btn">
+      <button type="button" (click)="open(registrar,'r')">Registrar Categoría</button>
+    </div>
+  </div>
+  <div class="d-flex justify-content-end">
+    <div class="wrap">
+      <div class="barra">
+        <div class="barraContainer">
+        <input type="text" class="buscar" placeholder="Ingrese el nombre de la categoría que desea buscar" (input)="tiempoBusquedadCategoria(valor.value)" #valor>
+          <em class="fa fa-search"></em>
+        </div>
+      </div>
+  </div>
+
+  <table aria-describedby="Tabla Descripción autores">
+    <thead>
+      <tr>
+        <th class="text-center">Id</th>
+        <th class="text-center">Nombre</th>
+        <th class="text-center">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of categorias">
+        <td class="text-center">{{a.id}}</td>
+        <td class="text-center">{{a.nombre}}</td>
+
+          <td class="text-center">
+            <button type="button" class="btn btn-outline-danger" (click)="deleteCategoriaId(a)" >Eliminar</button>
+            <br>
+            <br>
+            <button type="button" class="btn btn-outline-primary" (click)="searchCategoria(a,registrar)" >Modificar</button>
+          </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+
+
+<ng-template #registrar let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h2 class="modal-title text-center" *ngIf="!update" >Registra Categoría </h2>
+    <h2 class="modal-title text-center" *ngIf="update" >Actualizar Categoría </h2>
+
+    <button type="button" class="close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="pre-scrollable" (ngSubmit)="guardarActor(f)"  #f="ngForm">
+      <div class="form-group">
+        <label for="validation01">Nombre(*)</label>
+        <input type="text" class="form-control" id="validation01" name="nombre" [(ngModel)]="nombre" required>
+      </div>
+
+      <div class="modal-footer">
+        <div class="left-side">
+          <button type="button" class="btn btn-ligh" (click)="d('Cross click')">Cancelar</button>
+        </div>
+        <div class="divider"></div>
+        <div class="right-side">
+          <button type="submit" class="btn btn-danger" *ngIf="!update">Confirmar</button>
+          <button type="button" class="btn btn-danger" *ngIf="update" (click)="updateAutor()">Actualizar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>
